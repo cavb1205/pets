@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container">
+  <h1>{{historia.tituloPost}}</h1>
+  <h5>Categoría: {{historia.id_categoria}} - Publicado por: {{historia.id_usuario}} en {{historia.fechaPubPost}}</h5>
+  <img src="/media/{{historia.imagenPost}}" alt="historia.tituloPost" width="300px" height="300px">
+  <p>{{historia.contenidoPost}}</p>
+</div>
+
+
+{% endblock %}

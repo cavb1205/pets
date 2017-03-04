@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="conteiner">
+  <h1>Adopta a {{animal.nombreAdopcion}}</h1>
+  <img src="/media/{{animal.imagenDestacadaAdopcion}}" alt="{{animal.nombreAdopcion}}" height="300" width="300">
+  <img src="/media/{{animal.imagenAdopcion1}}" alt="{{animal.nombreAdopcion}}" height="100" width="100">
+
+  <img src="/media/{{animal.imagenAdopcion2}}" alt="{{animal.nombreAdopcion}}" height="100" width="100">
+
+
+  <h2>Categoria: {{animal.categoriaAdopcion}}</h2>
+  <h3>Raza: {{animal.razaAdopcion}}</h3>
+  <h3>Color: {{animal.colorAdopcion}}</h3>
+  <h3>Peso: {{animal.tamanoAdopcion}}</h3>
+  <h3>Edad: {{animal.edadAdopcion}}</h3>
+  <h3>Castrado: {{animal.castradoAdopcion}}</h3>
+  <p>{{animal.historiaAdopcion}}</p>
+
+
+
+</div>
+
+{% endblock %}

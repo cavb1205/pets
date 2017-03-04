@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{%block contenido %}
+{% for animal in animales %}
+  <h2><a href="#">{{animal.nombreAdopcion}}</a></h2>
+  <h5>Categoría: {{animal.categoriaAdopcion}} - Publicado por: {{animal.usuarioAdopcion}} en {{animal.fechaPubAdopcion}}</h5>
+  <p>Estado: {{animal.estadoAdopcion}}</p>
+  <p>{{animal.historiaAdopcion}}</p>
+  <p>Raza: {{animal.razaAdopcion}}</p>
+  <p>Color: {{animal.colorAdopcion}}</p>
+  <p>Edad: {{animal.edadAdopcion}} Meses</p>
+  <p>Tamaño: {{animal.tamanoAdopcion}}</p>
+  <p>Castrado: {{animal.castradoAdopcion}}</p>
+{% endfor %}
+
+{% endblock %}

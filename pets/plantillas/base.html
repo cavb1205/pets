@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pets</title>
+    <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!--    <link rel="stylesheet" href="{% static 'css/app.css' %}"> -->
+{% load staticfiles %}
+
+
+  </head>
+  <body>
+
+    <div class="page-header">
+
+        <nav class="navbar navbar">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <h1><a class="navbar-brand" href="/">BIENVEN IDOS A LA CASA DE LOS ANIMALES</a></h1>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Inicio</a></li>
+              <li><a href="/que_hacemos">Que Hacemos?</a></li>
+              <li><a href="/unete">Únete a la Causa</a></li>
+              <li><a href="/historias">Historias</a></li>
+              <li><a href="/adopcion">Adoptame</a></li>
+              <li><a href="/adoptados">Felizmente Adoptados</a></li>
+              <li><a href="/comedog">Proyecto Comedog?</a></li>
+            </ul>
+          </div>
+        </nav>
+
+    </div>
+
+{% block contenido %}
+
+{% endblock %}
+
+
+  </body>
+  <footer>
+      <div class="footer">
+        <p>© 2017 Reservados todos los derechos. Propietario del sitio®/™ Camilo Varon. <a href="mailto:ing.camilo.varon@gmail.com">Email: ing.camilo.varon@gmail.com</a></p>
+
+      </div>
+
+  </footer>
+
+
+</html>

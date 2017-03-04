@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+{% for historia in historias %}
+<p>
+  <ul class="media-list">
+    <li class="media">
+      <div class="media-left">
+        <a href="/detalle_historia/{{historia.id}}/{{historia.slugPost}}">
+          <img class="media-object" src="/media/{{historia.imagenPost}}" alt="{{historia.tituloPost}}" height="300" width="300">
+        </a>
+      </div>
+      <div class="media-body">
+        <a href="/detalle_historia/{{historia.id}}/{{historia.slugPost}}"><h2 class="media-heading"><strong>{{historia.tituloPost}}</strong></h2></a>
+        <h5>Categoria: {{historia.id_categoria}} - Autor: {{historia.id_usuario}} - Publicado: {{historia.fechaPubPost}}</h5>
+        <p>{{historia.contenidoPost}}</p>
+      </div>
+    </li>
+  </ul>
+</p>
+{% endfor %}
+
+{% endblock %}
