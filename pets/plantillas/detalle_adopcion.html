@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-<div class="conteiner">
+<div class="container">
   <h1>Adopta a {{animal.nombreAdopcion}}</h1>
   <img src="/media/{{animal.imagenDestacadaAdopcion}}" alt="{{animal.nombreAdopcion}}" height="300" width="300">
   <img src="/media/{{animal.imagenAdopcion1}}" alt="{{animal.nombreAdopcion}}" height="100" width="100">
@@ -10,6 +10,7 @@
 
 
   <h2>Categoria: {{animal.categoriaAdopcion}}</h2>
+  <h2>Estado: {{animal.estadoAdopcion}}</h2>
   <h3>Raza: {{animal.razaAdopcion}}</h3>
   <h3>Color: {{animal.colorAdopcion}}</h3>
   <h3>Peso: {{animal.tamanoAdopcion}}</h3>

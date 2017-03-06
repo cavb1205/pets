@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<style>
+  .panel-heading a{color:white;}
+
+</style>
+
+<div class="container">
+  <h1><strong>Felizmente Adoptados</strong></h1>
+  <div class="row well">
+    {% for adoptado in adoptados%}
+    <div class="col-md-3 well">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><a href="/detalle_adopcion/{{adoptado.id}}/{{adoptado.nombreAdopcion}}"><h3><strong>{{adoptado.nombreAdopcion}}</strong></h3></a></div>
+        <div class="panel-body">
+          <img src="/media/{{adoptado.imagenDestacadaAdopcion}}" alt="{{adoptado.nombreAdopcion}}" width="200" height="300">
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>
+
+{% endblock %}

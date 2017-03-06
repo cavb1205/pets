@@ -24,10 +24,13 @@ from adopcion import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.inicio),
+    url(r'^nosotros/$', views.nosotros),
+    url(r'^unete/$', views.unete),
     url(r'^historias/$', views.historias),
-    url(r'^adopcion/$', views.adopcion),
     url(r'^adopcion/$', views.adopcion),
     url(r'^detalle_adopcion/(?P<id_adopcion>.*)/(?P<nombreAdopcion>.*)/$', views.detalleAdopcion),
     url(r'^detalle_historia/(?P<id_post>.*)/(?P<slugPost>.*)/$', views.detalleHistoria),
+    url(r'^info/comedog/$', views.infoComedog),
+    url(r'^adoptados/$', views.adoptados),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
