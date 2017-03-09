@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
-from adopcion.models import Post, Adopcion
+from adopcion.models import Post, Adopcion, Eventos
 from django.template import RequestContext
 
 # Create your views here.
@@ -35,3 +35,11 @@ def adoptados(request):
 
 def infoComedog(request):
     return render_to_response('infoComedog.html')
+
+def planPadrinoComedog(request):
+    return render_to_response('planPadrinoComedog.html')
+
+def eventos(request):
+    eventos = Eventos.objects.filter(id_estadoEvento=3)
+    print eventos
+    return render_to_response('eventos.html',{'eventos':eventos})

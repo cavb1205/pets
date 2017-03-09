@@ -31,6 +31,8 @@ urlpatterns = [
     url(r'^detalle_adopcion/(?P<id_adopcion>.*)/(?P<nombreAdopcion>.*)/$', views.detalleAdopcion),
     url(r'^detalle_historia/(?P<id_post>.*)/(?P<slugPost>.*)/$', views.detalleHistoria),
     url(r'^info/comedog/$', views.infoComedog),
+    url(r'^comedog/plan_padrino_comedog/$', views.planPadrinoComedog),
     url(r'^adoptados/$', views.adoptados),
+    url(r'^proximos_eventos/$', views.eventos),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

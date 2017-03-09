@@ -10,9 +10,30 @@ class Usuario(models.Model):
     telefonoUsuario = models.CharField(max_length=20)
     emailUsuario = models.EmailField(max_length=100)
     creacionUsuario = models.DateField(auto_now_add=True)
+    avatarUsuario = models.ImageField(upload_to='fotos/avatar/',null=True, blank=True)
 
     def __unicode__(self):
         return self.nombreUsuario
+
+class Pais(models.Model):
+    nombrePais = models.CharField(max_length=20)
+
+    def __unicode__(self):
+        return self.nombrePais
+
+class Region(models.Model):
+    nombreRegion = models.CharField(max_length=20)
+    id_pais = models.ForeignKey(Pais,null=True)
+
+    def __unicode__(self):
+        return self.nombreRegion
+
+class Ciudad(models.Model):
+    nombreCiudad = models.CharField(max_length=20)
+    id_region = models.ForeignKey(Region, null=True)
+
+    def __unicode__(self):
+        return self.nombreCiudad
 
 class CategoriaPost(models.Model):
     nombreCategoriaPost = models.CharField(max_length=50)
@@ -20,7 +41,6 @@ class CategoriaPost(models.Model):
 
     def __unicode__(self):
         return self.nombreCategoriaPost
-
 
 class Post(models.Model):
     tituloPost = models.CharField(max_length=100)
@@ -34,18 +54,6 @@ class Post(models.Model):
     def __unicode__(self):
         return self.tituloPost
 
-class Eventos(models.Model):
-    nombreEvento = models.CharField(max_length=100)
-    descripcionEvento = models.TextField()
-    fechaEvento = models.DateTimeField(auto_now=False)
-    lugarEvento = models.CharField(max_length=100)
-    valorEvento = models.DecimalField(max_digits=10, decimal_places=2)
-    fechaPubEvento = models.DateField(auto_now_add=True)
-    imagenEvento = models.ImageField(upload_to='fotos/eventos/')
-    id_usuario = models.ForeignKey(Usuario)
-
-    def __unicode__(self):
-        return self.nombreEvento
 
 class Comedog(models.Model):
     nombreComedog = models.CharField(max_length=100)
@@ -53,6 +61,7 @@ class Comedog(models.Model):
     ubicacionComedog = models.CharField(max_length=100)
     responsableComedog = models.ForeignKey(Usuario)
     imagenComedog = models.ImageField(upload_to='fotos/comedog/')
+    id_ciudadComedog = models.ForeignKey(Ciudad,null=True)
 
     def __unicode__(self):
         return self.nombreComedog
@@ -97,6 +106,7 @@ class Estado(models.Model):
     def __unicode__(self):
         return self.nombreEstado
 
+
 class Adopcion(models.Model):
     nombreAdopcion = models.CharField(max_length=100, verbose_name='Nombre de la Mascota')
     edadAdopcion = models.IntegerField(help_text='Meses')
@@ -112,6 +122,22 @@ class Adopcion(models.Model):
     tamanoAdopcion = models.ForeignKey(Tamano)
     estadoAdopcion = models.ForeignKey(Estado)
     usuarioAdopcion = models.ForeignKey(Usuario)
+    id_ciudadAdopcion = models.ForeignKey(Ciudad,null=True)
 
     def __unicode__(self):
         return self.nombreAdopcion
+
+class Eventos(models.Model):
+    nombreEvento = models.CharField(max_length=100)
+    descripcionEvento = models.TextField()
+    fechaEvento = models.DateTimeField(auto_now=False)
+    lugarEvento = models.CharField(max_length=100)
+    valorEvento = models.DecimalField(max_digits=10, decimal_places=2)
+    fechaPubEvento = models.DateField(auto_now_add=True)
+    imagenEvento = models.ImageField(upload_to='fotos/eventos/')
+    id_usuario = models.ForeignKey(Usuario)
+    id_ciudadEvento = models.ForeignKey(Ciudad,null=True)
+    id_estadoEvento = models.ForeignKey(Estado,null=True)
+
+    def __unicode__(self):
+        return self.nombreEvento

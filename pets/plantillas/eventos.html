@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container">
+
+
+{% for evento in eventos %}
+<ul class="media-list">
+  <li class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="/media/{{evento.imagenEvento}}" alt="{{evento.nombreEvento}}" height="300" width="300">
+      </a>
+    </div>
+    <div class="media-body">
+      <a href="#"><h2 class="media-heading"><strong>{{evento.nombreEvento}}</strong></h2></a>
+      <h5><strong>Fecha del Evento:</strong> {{evento.fechaEvento}} </h5>
+      <h5><strong>Lugar del Evento:</strong> {{evento.lugarEvento}} </h5>
+      <p>{{evento.descripcionEvento}}</p>
+      <h5><strong>Costo del Evento:</strong> {{evento.valorEvento}}</h5>
+      <span>Publicado el {{evento.fechaPubEvento}} por {{evento.id_usuario}}</span>
+    </div>
+  </li>
+</ul>
+{% endfor %}
+</div>
+{% endblock %}
