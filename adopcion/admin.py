@@ -1,12 +1,11 @@
 from django.contrib import admin
-from adopcion.models import Ciudad,Pais, Region,Post, CategoriaPost, Usuario, Eventos, Comedog, CategoriaAdopcion, Raza, Color, Castrado, Tamano, Estado, Adopcion
+from adopcion.models import Ciudad,Pais, Region,Post, CategoriaPost, Eventos, Comedog, CategoriaAdopcion, Raza, Color, Castrado, Tamano, Estado, Adopcion
 # Register your models here.
 
 
 
 admin.site.register(CategoriaPost)
 admin.site.register(Post)
-admin.site.register(Usuario)
 admin.site.register(Eventos)
 admin.site.register(Comedog)
 admin.site.register(Adopcion)

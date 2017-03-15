@@ -1,19 +1,10 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
-class Usuario(models.Model):
-    nombreUsuario = models.CharField(max_length=20)
-    apellidoUsuario = models.CharField(max_length=20)
-    telefonoUsuario = models.CharField(max_length=20)
-    emailUsuario = models.EmailField(max_length=100)
-    creacionUsuario = models.DateField(auto_now_add=True)
-    avatarUsuario = models.ImageField(upload_to='fotos/avatar/',null=True, blank=True)
-
-    def __unicode__(self):
-        return self.nombreUsuario
 
 class Pais(models.Model):
     nombrePais = models.CharField(max_length=20)
@@ -48,7 +39,7 @@ class Post(models.Model):
     imagenPost = models.ImageField(upload_to='fotos/post/')
     slugPost = models.SlugField(max_length=50)
     fechaPubPost = models.DateField(auto_now_add=True)
-    id_usuario = models.ForeignKey(Usuario, null=False, blank=False)
+    id_User = models.ForeignKey(User, null=True, blank=True)
     id_categoria = models.ForeignKey(CategoriaPost, null=True, blank=True)
 
     def __unicode__(self):
@@ -59,7 +50,7 @@ class Comedog(models.Model):
     nombreComedog = models.CharField(max_length=100)
     descripcionComedog = models.TextField()
     ubicacionComedog = models.CharField(max_length=100)
-    responsableComedog = models.ForeignKey(Usuario)
+    responsableComedog = models.ForeignKey(User,null=True,blank=True)
     imagenComedog = models.ImageField(upload_to='fotos/comedog/')
     id_ciudadComedog = models.ForeignKey(Ciudad,null=True)
 
@@ -121,7 +112,7 @@ class Adopcion(models.Model):
     castradoAdopcion = models.ForeignKey(Castrado)
     tamanoAdopcion = models.ForeignKey(Tamano)
     estadoAdopcion = models.ForeignKey(Estado)
-    usuarioAdopcion = models.ForeignKey(Usuario)
+    UserAdopcion = models.ForeignKey(User,null=True,blank=True)
     id_ciudadAdopcion = models.ForeignKey(Ciudad,null=True)
 
     def __unicode__(self):
@@ -135,7 +126,7 @@ class Eventos(models.Model):
     valorEvento = models.DecimalField(max_digits=10, decimal_places=2)
     fechaPubEvento = models.DateField(auto_now_add=True)
     imagenEvento = models.ImageField(upload_to='fotos/eventos/')
-    id_usuario = models.ForeignKey(Usuario)
+    id_User = models.ForeignKey(User,null=True,blank=True)
     id_ciudadEvento = models.ForeignKey(Ciudad,null=True)
     id_estadoEvento = models.ForeignKey(Estado,null=True)
 

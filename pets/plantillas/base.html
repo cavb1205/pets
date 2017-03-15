@@ -7,43 +7,72 @@
     <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 
 
+
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!--    <link rel="stylesheet" href="{% static 'css/app.css' %}"> -->
+  <!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 {% load staticfiles %}
 
 
   </head>
   <body>
 
-    <div class="page-header">
+    <!-- Dropdown Structure Quienes somos-->
+      <ul id="dropdown1" class="dropdown-content">
+        <li><a href="/nosotros/">Que Hacemos?</a></li>
+        <li class="divider"></li>
+        <li><a href="/unete/">Únete a la Causa</a></li>
+        <li class="divider"></li>
 
-        <nav class="navbar navbar">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <h1><a class="navbar-brand" href="/">BIENVEN IDOS A LA CASA DE LOS ANIMALES</a></h1>
-            </div>
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Inicio</a></li>
-              <li><a href="/nosotros">Que Hacemos?</a></li>
-              <li><a href="/unete">Únete a la Causa</a></li>
+      </ul>
+
+
+      <!-- Dropdown Structure ComeDog-->
+        <ul id="dropdown" class="dropdown-content">
+          <li><a href="/info/comedog/">Que es el Proyecto ComeDog?</a></li>
+          <li class="divider"></li>
+          <li><a href="/comedog/plan_padrino_comedog/">Plan Padrino ComeDog</a></li>
+          <li class="divider"></li>
+
+        </ul>
+
+
+        <nav>
+          <div class="nav-wrapper">
+            <a href="/" class="brand-logo"><strong>PETS</strong></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a class="dropdown-button" href="#" data-activates='dropdown1' data-beloworigin='true'>Nosotros <i class="material-icons right">arrow_drop_down</i></a></li>
               <li><a href="/historias">Historias</a></li>
-              <li><a href="/adopcion">Adoptame</a></li>
+              <li><a href="/adopcion">Adopta</a></li>
               <li><a href="/adoptados">Felizmente Adoptados</a></li>
-              <li><a href="/info/comedog">Proyecto Comedog</a></li>
-              <li><a href="/comedog/plan_padrino_comedog/">Plan Padrino ComeDog</a></li>
+              <li><a class="dropdown-button" href="#" data-activates="dropdown" data-beloworigin="true">Proyecto Comedog<i class="material-icons right">arrow_drop_down</i></a></li>
               <li><a href="/proximos_eventos">Proximos Eventos</a></li>
+              {% if user.is_authenticated %}
+              <li><a href="/perfil/{{user.id}}/{{user.first_name}}"><strong>{{user.first_name|upper}}</strong></a></li>
+              <li><a href="/logout"><strong>Salir</strong></a></li>
+              {% else %}
+              <li><a href="/login"><strong>Iniciar Sesión</strong></a></li>
+              {% endif %}
             </ul>
           </div>
         </nav>
 
-    </div>
+        <!--Import jQuery before materialize.js-->
+              <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+              <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+
 
 {% block contenido %}
 
@@ -51,9 +80,30 @@
 
 
   </body>
-  <footer>
-      <div class="footer">
-        <p>© 2017 Reservados todos los derechos. Propietario del sitio®/™ Camilo Varon. <a href="mailto:ing.camilo.varon@gmail.com">Email: ing.camilo.varon@gmail.com</a></p>
+  <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+             <div class="col l6 s12">
+               <h5 class="white-text">Footer Content</h5>
+               <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+             </div>
+             <div class="col l4 offset-l2 s12">
+               <h5 class="white-text">Links</h5>
+               <ul>
+                 <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                 <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                 <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                 <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+               </ul>
+             </div>
+           </div>
+        <div class="footer-copyright">
+          <div class="container center-align">
+            © 2017 Reservados todos los derechos. Contacto: <a href="mailto:ing.camilo.varon@gmail.com">Camilo Andres Varon</a>
+          </div>
+
+        </div>
+
 
       </div>
 

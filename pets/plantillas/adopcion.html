@@ -3,30 +3,23 @@
 
 {%block contenido %}
 
-<style>
-  .panel-heading a{color:white;}
+<div class="row">
+{% for animal in animales %}
+       <div class="col s12 m3 l3">
+         <div class="card-panel grey lighten-5 z-depth-1">
+           <div class="card-image">
+             <img class="responsive-img" src="/media/{{animal.imagenDestacadaAdopcion}}" width="300" height="300">
+           </div>
+           <div class="card-content">
+             <a href="/detalle_adopcion/{{animal.id}}/{{animal.nombreAdopcion}}"><strong><span class="card-title">{{animal.nombreAdopcion}}</span></strong></a>
+             <p>texto</p>
+           </div>
 
-</style>
+           </div>
+         </div>
 
-<div class="row well">
-  {% for animal in animales %}
-  <div class="col-md-3 well">
-    <div class="panel panel-primary">
-      <div class="panel-heading"><a href="/detalle_adopcion/{{animal.id}}/{{animal.nombreAdopcion}}"><h3><strong>{{animal.nombreAdopcion}}</strong></h3></a></div>
-      <div class="panel-body">
-          <img src="/media/{{animal.imagenDestacadaAdopcion}}" alt="{{animal.nombreAdopcion}}" width="200" height="300" class="img-rounded">
-          <p>
-            <a href="#" class="btn btn-primary" role="button">Adoptar!</a>
-            <a href="#" class="btn btn-default" role="button">Apadrinar!</a>
-          </p>
-      </div>
-    </div>
 
-  </div>
   {% endfor %}
 </div>
-
-
-
 
 {% endblock %}

@@ -1,45 +1,59 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from adopcion.models import Post, Adopcion, Eventos
-from django.template import RequestContext
+from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.models import User
+from django.contrib.auth import logout
+
+
 
 # Create your views here.
+
+
+def socialLogin(request):
+    return render(request,'login.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('/login')
+
 def inicio(request):
-    return render_to_response('index.html',{'inicio':inicio})
+
+    return render(request,'index.html',{'inicio':inicio})
 
 def nosotros(request):
-    return render_to_response('nosotros.html')
+    return render(request,'nosotros.html')
 
 def unete(request):
-    return render_to_response('unete.html')
+    return render(request,'unete.html')
 
 def historias(request):
     historias = Post.objects.all()
-    return render_to_response('historias.html',{'historias':historias})
+    return render(request,'historias.html',{'historias':historias})
 
 def detalleHistoria(request,id_post,slugPost):
     historia = Post.objects.get(id=id_post)
-    return render_to_response('detalle_historia.html',{'historia':historia})
+    return render(request,'detalle_historia.html',{'historia':historia})
 
 def adopcion(request):
     animales = Adopcion.objects.filter(estadoAdopcion=1)
-    return render_to_response('adopcion.html',{'animales':animales})
+    return render(request,'adopcion.html',{'animales':animales})
 
 def detalleAdopcion(request,id_adopcion,nombreAdopcion):
     animal = Adopcion.objects.get(id=id_adopcion)
-    return render_to_response('detalle_adopcion.html',{'animal':animal})
+    return render(request,'detalle_adopcion.html',{'animal':animal})
 
 def adoptados(request):
     adoptados = Adopcion.objects.filter(estadoAdopcion=2)
-    return render_to_response('adoptados.html',{'adoptados':adoptados})
+    return render(request,'adoptados.html',{'adoptados':adoptados})
 
 def infoComedog(request):
-    return render_to_response('infoComedog.html')
+    return render(request,'infoComedog.html')
 
 def planPadrinoComedog(request):
-    return render_to_response('planPadrinoComedog.html')
+    return render(request,'planPadrinoComedog.html')
 
 def eventos(request):
     eventos = Eventos.objects.filter(id_estadoEvento=3)
-    print eventos
-    return render_to_response('eventos.html',{'eventos':eventos})
+
+    return render(request,'eventos.html',{'eventos':eventos})

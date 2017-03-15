@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'adopcion',
+    'social_django',
+
 ]
 
 MIDDLEWARE = [
@@ -63,6 +65,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                ##Python Social Auth##
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -123,3 +128,20 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'adopcion/static')
 ]
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+##SOCIAL AUTH##
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+SOCIAL_AUTH_TWITTER_KEY = 'wWQDj047vpYqRv2gYOr1eh4eX'
+SOCIAL_AUTH_TWITTER_SECRET = '88VdAogEY7ulFT968MbLB6P2nRlhwAgQvb0mR6AJ3lZFTnW9fQ'
+SOCIAL_AUTH_FACEBOOK_KEY = '1864647797158251'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'a546ee1b24bc0bd49537553cf35764ec'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/"
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+'fields': 'id,name,email',
+}

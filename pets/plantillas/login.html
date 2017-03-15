@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container center">
+  <h1>Inicio de Sesión</h1>
+</div>
+<div class="container center">
+  {% if user.is_authenticated %}
+  <h3>Usted esta logueado como {{user.first_name}}</h3>
+  {% else %}
+  <a class="waves-effect waves-light btn" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+  Entrar con Facebook
+  </a>
+  <a class="waves-effect waves-light btn" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
+  Entrar con Twitter
+  </a>
+  <br><br>
+  {% endif %}
+</div>
+
+
+
+{% endblock %}
