@@ -45,8 +45,16 @@
           <li class="divider"></li>
           <li><a href="/comedog/plan_padrino_comedog/">Plan Padrino ComeDog</a></li>
           <li class="divider"></li>
+          <li><a href="#">ComeDogs Disponibles</a></li>
 
         </ul>
+        <!-- Dropdown Structure Eventos-->
+          <ul id="dropdown2" class="dropdown-content">
+            <li><a href="/proximos_eventos">Proximos Eventos</a></li>
+            <li class="divider"></li>
+            <li><a href="/historial_eventos">Historial Eventos</a></li>
+            <li class="divider"></li>
+          </ul>
 
 
         <nav>
@@ -58,9 +66,9 @@
               <li><a href="/adopcion">Adopta</a></li>
               <li><a href="/adoptados">Felizmente Adoptados</a></li>
               <li><a class="dropdown-button" href="#" data-activates="dropdown" data-beloworigin="true">Proyecto Comedog<i class="material-icons right">arrow_drop_down</i></a></li>
-              <li><a href="/proximos_eventos">Proximos Eventos</a></li>
+              <li><a class="dropdown-button" data-activates="dropdown2" data-beloworigin="true" href="#">Eventos <i class="material-icons right">arrow_drop_down</i></a></li>
               {% if user.is_authenticated %}
-              <li><a href="/perfil/{{user.id}}/{{user.first_name}}"><strong>{{user.first_name|upper}}</strong></a></li>
+              <li><a href="/perfil/{{user.id}}/"><strong>{{user.first_name|upper}}</strong></a></li>
               <li><a href="/logout"><strong>Salir</strong></a></li>
               {% else %}
               <li><a href="/login"><strong>Iniciar Sesión</strong></a></li>

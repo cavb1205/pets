@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container">
+    <h1>{{user.get_full_name}}</h1>
+    {% if user.perfil.avatar %}
+    <img src="/media/{{user.perfil.avatar}}" alt="{{user.get_full_name}}" height="300" width="300">
+    {% endif %}
+    <p>{{user.perfil.biografia}}</p>
+    <p>Fecha de Nacimiento: {{user.perfil.fecha_cumpleanos}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Te uniste el: {{user.date_joined}}</p>
+    <button type="button" name="button">Editar Perfil</button>
+
+</div>
+<br><br>
+
+{% endblock %}

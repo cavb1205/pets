@@ -15,14 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.db import models
 from django.conf.urls.static import static
 from django.conf import settings
+
+
 
 
 from adopcion import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^perfil/(?P<id_user>.*)/', views.perfil),
     url(r'^$', views.inicio),
     url(r'^login/$', views.socialLogin),
     url(r'^logout/$', views.logout_view),
@@ -36,8 +40,12 @@ urlpatterns = [
     url(r'^comedog/plan_padrino_comedog/$', views.planPadrinoComedog),
     url(r'^adoptados/$', views.adoptados),
     url(r'^proximos_eventos/$', views.eventos),
+    url(r'^historial_eventos/$', views.historial_eventos),
+    url(r'^detalle_evento/(?P<id_evento>.*)/(?P<nombreEvento>.*)/$', views.detalleEventos),
 
     # Python Social Auth URLs
     url('', include('social_django.urls', namespace='social')),
+    #markdown
+    url(r'^draceditor/', include('draceditor.urls')),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

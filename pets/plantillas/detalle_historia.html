@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
+{% load dractags %}
 <div class="container">
   <h1>{{historia.tituloPost}}</h1>
   <h5>Categoría: {{historia.id_categoria}} - Publicado por: {{historia.id_usuario}} en {{historia.fechaPubPost}}</h5>
+  {% if historia.imagenPost %}
   <img src="/media/{{historia.imagenPost}}" alt="historia.tituloPost" width="300px" height="300px">
-  <p>{{historia.contenidoPost}}</p>
+  {% endif %}
+  <p>{{historia.contenidoPost|safe_markdown}}</p>
+  {% if historia.videoPost %}
+  <div class="video-container">
+        <iframe width="640" height="360" src="{{historia.videoPost}}" frameborder="0"></iframe>
+  </div>
+  {% endif %}
 </div>
-
-
+<br><br>
 {% endblock %}

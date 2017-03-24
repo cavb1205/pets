@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container">
+  <h1>{{evento.nombreEvento}}</h1>
+  <span>Publicado el: {{evento.fechaPubEvento}} por {{evento.id_User}}</span>
+  <br><br>
+  <img src="/media/{{evento.imagenEvento}}" alt="{{nombreEvento}}" width="300" height="300">
+  <p>{{evento.descripcionEvento}}</p>
+  <p>Fecha Evento: {{evento.fechaEvento}}</p>
+  <p>Lugar del Evento: {{evento.lugarEvento}}</p>
+  <p>Valor: {{evento.valorEvento}}</p>
+  
+</div>
+
+
+{% endblock %}

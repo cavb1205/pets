@@ -8,7 +8,9 @@ from django.contrib.auth import logout
 
 
 # Create your views here.
-
+def perfil(request,id_user):
+    print request.user.first_name
+    return render(request,'perfil.html')
 
 def socialLogin(request):
     return render(request,'login.html')
@@ -28,7 +30,7 @@ def unete(request):
     return render(request,'unete.html')
 
 def historias(request):
-    historias = Post.objects.all()
+    historias = Post.objects.filter(id_aprobacion=1)
     return render(request,'historias.html',{'historias':historias})
 
 def detalleHistoria(request,id_post,slugPost):
@@ -36,7 +38,7 @@ def detalleHistoria(request,id_post,slugPost):
     return render(request,'detalle_historia.html',{'historia':historia})
 
 def adopcion(request):
-    animales = Adopcion.objects.filter(estadoAdopcion=1)
+    animales = Adopcion.objects.filter(estadoAdopcion=1).filter(id_aprobacion=1)
     return render(request,'adopcion.html',{'animales':animales})
 
 def detalleAdopcion(request,id_adopcion,nombreAdopcion):
@@ -54,6 +56,13 @@ def planPadrinoComedog(request):
     return render(request,'planPadrinoComedog.html')
 
 def eventos(request):
-    eventos = Eventos.objects.filter(id_estadoEvento=3)
-
+    eventos = Eventos.objects.filter(id_estadoEvento=1).filter(id_aprobacion=1)
     return render(request,'eventos.html',{'eventos':eventos})
+
+def historial_eventos(request):
+    historial_eventos = Eventos.objects.filter(id_estadoEvento=2)
+    return render(request,'historial_eventos.html',{'historial_eventos':historial_eventos})
+
+def detalleEventos(request,id_evento,nombreEvento):
+    evento = Eventos.objects.get(id=id_evento)
+    return render(request,'detalle_evento.html',{'evento':evento})

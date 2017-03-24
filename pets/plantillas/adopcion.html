@@ -2,11 +2,12 @@
 
 
 {%block contenido %}
-
+{% if animales %}
 <div class="row">
+
 {% for animal in animales %}
-       <div class="col s12 m3 l3">
-         <div class="card-panel grey lighten-5 z-depth-1">
+      <div class="col s12 m4 l3">
+         <div class="card-panel grey lighten-5 z-depth-1 hoverable">
            <div class="card-image">
              <img class="responsive-img" src="/media/{{animal.imagenDestacadaAdopcion}}" width="300" height="300">
            </div>
@@ -21,5 +22,10 @@
 
   {% endfor %}
 </div>
+{% else %}
+<div class="container center">
+  <h3>No hay animales disponibles para adoptar</h3>
+</div>
 
+{% endif %}
 {% endblock %}
