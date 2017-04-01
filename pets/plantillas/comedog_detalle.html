@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container">
+  <div class="card-panel white">
+
+
+    <h3>{{comedog.nombreComedog|upper}}</h3>
+    <img src="/media/{{comedog.imagenComedog}}" alt="{{comedog.nombreComedog}}" width="300" height="400">
+    <p>{{comedog.descripcionComedog}}</p>
+    <p>Ciudad: {{comedog.id_ciudadComedog}}</p>
+    <p>ubicación: {{comedog.ubicacionComedog}}</p>
+    <p>Responsabe del Comedog:<a href="#">{{comedog.responsableComedog}}</a></p>
+  </div>
+</div>
+
+{% endblock %}

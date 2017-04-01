@@ -5,6 +5,7 @@
 
 <div class="container">
   <h1><strong>Felizmente Adoptados</strong></h1>
+{% if adoptados %}
   <div class="row well">
     {% for adoptado in adoptados%}
     <div class="col-md-3 well">
@@ -18,8 +19,9 @@
   {% endfor %}
 
 </div>
-
-
+{% else %}
+<h4>Lastimosamente no se ha adoptado ninguna mascota <i class="material-icons">sentiment_very_dissatisfied</i></h4>
+{% endif %}
 </div>
 
 {% endblock %}

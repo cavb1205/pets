@@ -34,14 +34,19 @@ urlpatterns = [
     url(r'^unete/$', views.unete),
     url(r'^historias/$', views.historias),
     url(r'^adopcion/$', views.adopcion),
+    url(r'^contacto/$', views.contactoForm),
     url(r'^detalle_adopcion/(?P<id_adopcion>.*)/(?P<nombreAdopcion>.*)/$', views.detalleAdopcion),
     url(r'^detalle_historia/(?P<id_post>.*)/(?P<slugPost>.*)/$', views.detalleHistoria),
     url(r'^info/comedog/$', views.infoComedog),
     url(r'^comedog/plan_padrino_comedog/$', views.planPadrinoComedog),
+    url(r'^comedogs/$', views.comedog),
+    url(r'^comedog/(?P<id_comedog>.*)/(?P<nombreComedog>.*)/$', views.comedog_detalle),
     url(r'^adoptados/$', views.adoptados),
     url(r'^proximos_eventos/$', views.eventos),
     url(r'^historial_eventos/$', views.historial_eventos),
     url(r'^detalle_evento/(?P<id_evento>.*)/(?P<nombreEvento>.*)/$', views.detalleEventos),
+    url(r'^gracias/$', views.gracias),
+
 
     # Python Social Auth URLs
     url('', include('social_django.urls', namespace='social')),

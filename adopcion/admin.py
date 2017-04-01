@@ -1,5 +1,5 @@
 from django.contrib import admin
-from adopcion.models import Perfil,EstadoEvento,Aprobacion,Ciudad,Pais, Region,Post, CategoriaPost, Eventos, Comedog, CategoriaAdopcion, Raza, Color, Castrado, Tamano, Estado, Adopcion
+from adopcion.models import Contacto,Perfil,EstadoEvento,Aprobacion,Ciudad,Pais, Region,Post, CategoriaPost, Eventos, Comedog, CategoriaAdopcion, Raza, Color, Castrado, Tamano, Estado, Adopcion
 
 from draceditor.widgets import AdminDraceditorWidget
 
@@ -14,6 +14,7 @@ class PostModelAdmin(admin.ModelAdmin):
 admin.site.register(Post, PostModelAdmin)
 
 admin.site.register(Perfil)
+admin.site.register(Contacto)
 admin.site.register(EstadoEvento)
 admin.site.register(CategoriaPost)
 #admin.site.register(Post, MarkdownxModelAdmin)

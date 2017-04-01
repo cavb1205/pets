@@ -4,7 +4,9 @@
 <div class="container">
   <h1>Historial Eventos</h1>
 </div>
+
 <div class="container">
+{% if historial_eventos %}
   {% for historial in historial_eventos %}
   <ul class="media-list">
     <li class="media">
@@ -22,6 +24,9 @@
     </li>
   </ul>
   {% endfor %}
+{% else %}
+<h4>No hay historial de eventos para mostrar</h4>
+{% endif %}
 </div>
 
 

@@ -4,7 +4,7 @@
 {% load dractags %}
 <div class="container">
   <h1>{{historia.tituloPost}}</h1>
-  <h5>Categoría: {{historia.id_categoria}} - Publicado por: {{historia.id_usuario}} en {{historia.fechaPubPost}}</h5>
+  <h6>Categoría: {{historia.id_categoria}} - Publicado por: {{historia.id_User}} el {{historia.fechaPubPost}}</h6>
   {% if historia.imagenPost %}
   <img src="/media/{{historia.imagenPost}}" alt="historia.tituloPost" width="300px" height="300px">
   {% endif %}

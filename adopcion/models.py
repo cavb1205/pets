@@ -189,3 +189,11 @@ class Eventos(models.Model):
 
     def __unicode__(self):
         return self.nombreEvento
+
+class Contacto(models.Model):
+    nombreContacto = models.CharField(max_length=50,blank=False)
+    emailContacto = models.EmailField(max_length=100)
+    contenidoContacto = models.TextField(max_length=60000)
+
+    def __unicode__(self):
+        return self.nombreContacto

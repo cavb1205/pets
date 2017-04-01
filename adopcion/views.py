@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
-from adopcion.models import Post, Adopcion, Eventos
+from adopcion.models import Post, Adopcion, Eventos, Contacto, Comedog
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
+from .forms import ContactoForm
+from django.http import HttpResponseRedirect
 
 
 
@@ -28,6 +30,10 @@ def nosotros(request):
 
 def unete(request):
     return render(request,'unete.html')
+
+def contacto(request):
+    contactos = Contacto.objects.all()
+    return render(request, 'contacto.html',{'contactos':contactos})
 
 def historias(request):
     historias = Post.objects.filter(id_aprobacion=1)
@@ -55,6 +61,14 @@ def infoComedog(request):
 def planPadrinoComedog(request):
     return render(request,'planPadrinoComedog.html')
 
+def comedog(request):
+    comedogs = Comedog.objects.filter(id_aprobacion=1)
+    return render(request,'comedogs.html',{'comedogs':comedogs})
+
+def comedog_detalle(request,id_comedog,nombreComedog):
+    comedog = Comedog.objects.get(id=id_comedog)
+    return render(request,'comedog_detalle.html',{'comedog':comedog})
+
 def eventos(request):
     eventos = Eventos.objects.filter(id_estadoEvento=1).filter(id_aprobacion=1)
     return render(request,'eventos.html',{'eventos':eventos})
@@ -66,3 +80,18 @@ def historial_eventos(request):
 def detalleEventos(request,id_evento,nombreEvento):
     evento = Eventos.objects.get(id=id_evento)
     return render(request,'detalle_evento.html',{'evento':evento})
+
+def gracias(request):
+    return render(request,'gracias.html')
+
+##Formularios Aca##
+
+def contactoForm(request):
+    if request.method == "POST":
+        form = ContactoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/gracias/')
+    else:
+        form = ContactoForm()
+    return render(request, 'contactoform.html', {'form': form})

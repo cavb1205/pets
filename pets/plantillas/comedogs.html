@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<div class="container">
+  <h3>Comedogs actualmente disponibles:</h3>
+  {% if comedogs %}
+    {% for comedog in comedogs %}
+      <div class="section">
+          <a href="/comedog/{{comedog.id}}/{{comedog.nombreComedog}}"><h2 class="media-heading"><strong>{{comedog.nombreComedog|upper}}</strong></h2></a>
+          <img src="/media/{{comedog.imagenComedog}}" alt="{{comedog.nombreComedog}}" width="300" height="400">
+      </div>
+      <div class="divider"></div>
+
+    {% endfor %}
+  {% else %}
+    <h4>En el momento no tenemos comedogs instalados</h4>
+  {% endif %}
+</div>
+
+{% endblock %}

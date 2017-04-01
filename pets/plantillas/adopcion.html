@@ -2,30 +2,37 @@
 
 
 {%block contenido %}
+<div class="container">
 {% if animales %}
-<div class="row">
 
-{% for animal in animales %}
-      <div class="col s12 m4 l3">
-         <div class="card-panel grey lighten-5 z-depth-1 hoverable">
-           <div class="card-image">
-             <img class="responsive-img" src="/media/{{animal.imagenDestacadaAdopcion}}" width="300" height="300">
+
+
+  <div class="row">
+
+  {% for animal in animales %}
+        <div class="col s12 m4 l3">
+           <div class="card-panel grey lighten-5 z-depth-1 hoverable">
+             <div class="card-image">
+               <a href="/detalle_adopcion/{{animal.id}}/{{animal.nombreAdopcion}}"><img class="responsive-img" src="/media/{{animal.imagenDestacadaAdopcion}}" width="300" height="300"></a>
+             </div>
+             <div class="card-content">
+               <a href="/detalle_adopcion/{{animal.id}}/{{animal.nombreAdopcion}}"><strong><span class="card-title">{{animal.nombreAdopcion}}</span></strong></a>
+               <p>texto</p>
+             </div>
+             <div class="card-action">
+               <a href="#" class="waves-effect waves-light btn">{{animal.estadoAdopcion}}<i class="material-icons">pets</i></a>
+             </div>
+             </div>
            </div>
-           <div class="card-content">
-             <a href="/detalle_adopcion/{{animal.id}}/{{animal.nombreAdopcion}}"><strong><span class="card-title">{{animal.nombreAdopcion}}</span></strong></a>
-             <p>texto</p>
-           </div>
-
-           </div>
-         </div>
 
 
-  {% endfor %}
-</div>
-{% else %}
-<div class="container center">
-  <h3>No hay animales disponibles para adoptar</h3>
-</div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="container center">
+    <h3>No hay animales disponibles para adoptar</h3>
+  </div>
 
 {% endif %}
+</div>
 {% endblock %}
