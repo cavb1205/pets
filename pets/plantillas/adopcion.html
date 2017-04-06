@@ -4,8 +4,9 @@
 {%block contenido %}
 <div class="container">
 {% if animales %}
-
-
+<p>
+<a href="/adopcion/nueva/" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+</p>
 
   <div class="row">
 
@@ -17,7 +18,7 @@
              </div>
              <div class="card-content">
                <a href="/detalle_adopcion/{{animal.id}}/{{animal.nombreAdopcion}}"><strong><span class="card-title">{{animal.nombreAdopcion}}</span></strong></a>
-               <p>texto</p>
+               <p>{{animal.razaAdopcion}}, {{animal.edadAdopcion}} Meses</p>
              </div>
              <div class="card-action">
                <a href="#" class="waves-effect waves-light btn">{{animal.estadoAdopcion}}<i class="material-icons">pets</i></a>

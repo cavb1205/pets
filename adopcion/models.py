@@ -75,14 +75,14 @@ class Aprobacion(models.Model):
         return self.aprobacion
 
 class Post(models.Model):
-    tituloPost = models.CharField(max_length=100)
-    contenidoPost = models.TextField(max_length=60000)
-    imagenPost = models.ImageField(upload_to='fotos/post/',blank=True,null=True)
-    videoPost = models.URLField(max_length=200,blank=True,null=True)
+    tituloPost = models.CharField(max_length=100,verbose_name='Titulo de la Historia')
+    contenidoPost = models.TextField(max_length=60000,verbose_name='Contenido')
+    imagenPost = models.ImageField(upload_to='fotos/post/',blank=True,null=True,help_text='       Agregue una imagen relacionada a la historia si lo desea', verbose_name='Agregar Imagen')
+    videoPost = models.URLField(max_length=200,blank=True,null=True,help_text='Pegue en este campo la direccion URL del video que quiere agregar desde youtube',verbose_name='Agregar URL de un Video desde YouTube')
     slugPost = models.SlugField(editable=False,null=False,blank=True)
     fechaPubPost = models.DateField(auto_now_add=True)
     id_User = models.ForeignKey(User, null=True, blank=True)
-    id_categoria = models.ForeignKey(CategoriaPost, null=True, blank=True)
+    id_categoria = models.ForeignKey(CategoriaPost, null=True, blank=True,verbose_name='Categoria de la Historia')
     id_aprobacion = models.ForeignKey(Aprobacion, null=True, blank=True, default=2)
 
     def __unicode__(self):
@@ -160,7 +160,7 @@ class Adopcion(models.Model):
     colorAdopcion = models.ForeignKey(Color)
     castradoAdopcion = models.ForeignKey(Castrado)
     tamanoAdopcion = models.ForeignKey(Tamano)
-    estadoAdopcion = models.ForeignKey(Estado)
+    estadoAdopcion = models.ForeignKey(Estado,default=1)
     UserAdopcion = models.ForeignKey(User,null=True,blank=True)
     id_ciudadAdopcion = models.ForeignKey(Ciudad,null=True)
     id_aprobacion = models.ForeignKey(Aprobacion,null=True, blank=True, default=2)
@@ -191,9 +191,9 @@ class Eventos(models.Model):
         return self.nombreEvento
 
 class Contacto(models.Model):
-    nombreContacto = models.CharField(max_length=50,blank=False)
-    emailContacto = models.EmailField(max_length=100)
-    contenidoContacto = models.TextField(max_length=60000)
+    nombreContacto = models.CharField(max_length=50,blank=False,verbose_name='Nombre')
+    emailContacto = models.EmailField(max_length=100,verbose_name='Email')
+    contenidoContacto = models.TextField(max_length=60000,verbose_name='Contenido')
 
     def __unicode__(self):
         return self.nombreContacto

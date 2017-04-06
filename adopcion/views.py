@@ -4,7 +4,7 @@ from adopcion.models import Post, Adopcion, Eventos, Contacto, Comedog
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
-from .forms import ContactoForm
+from .forms import ContactoForm,PostForm, AdopcionForm,EventosForm,ComedogForm
 from django.http import HttpResponseRedirect
 
 
@@ -95,3 +95,52 @@ def contactoForm(request):
     else:
         form = ContactoForm()
     return render(request, 'contactoform.html', {'form': form})
+
+def agregar_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.id_User = request.user
+            print post.imagenPost
+            print post.id_User
+            post.save()
+
+            return HttpResponseRedirect('/gracias/')
+    else:
+        form = PostForm()
+    return render(request,'postform.html',{'form':form})
+
+def agregar_mascota(request):
+    if request.method == 'POST':
+        form = AdopcionForm(request.POST,request.FILES)
+        if form.is_valid():
+            adopcion = form.save(commit=False)
+            adopcion.UserAdopcion = request.user
+            adopcion.save()
+            return HttpResponseRedirect('/gracias/')
+    else:
+        form = AdopcionForm()
+    return render(request,'agregar_mascota.html',{'form':form})
+
+def agregar_evento(request):
+    if request.method == 'POST':
+        form = EventosForm(request.POST,request.FILES)
+        if form.is_valid():
+            evento = form.save(commit=False)
+            evento.id_User=request.user
+            evento.save()
+            return HttpResponseRedirect('/gracias/')
+    else:
+        form = EventosForm()
+    return render(request,'agregar_evento.html',{'form':form})
+
+def agregar_comedog(request):
+    if request.method == 'POST':
+        form = ComedogForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/gracias/')
+    else:
+        form = ComedogForm()
+    return render(request,'agregar_comedog.html',{'form':form})

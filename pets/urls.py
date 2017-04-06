@@ -46,6 +46,12 @@ urlpatterns = [
     url(r'^historial_eventos/$', views.historial_eventos),
     url(r'^detalle_evento/(?P<id_evento>.*)/(?P<nombreEvento>.*)/$', views.detalleEventos),
     url(r'^gracias/$', views.gracias),
+    ##url formularios##
+    url(r'^historia/nueva/$', views.agregar_post),
+    url(r'^adopcion/nueva/$', views.agregar_mascota),
+    url(r'^evento/nuevo/$', views.agregar_evento),
+    url(r'^comedog/nuevo/$', views.agregar_comedog),
+
 
 
     # Python Social Auth URLs

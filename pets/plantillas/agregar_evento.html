@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<div class="container center">
+	<h1>Nuevo Evento</h1>
+</div>
+<div class="container">
+	<div class="card-panel">
+
+
+	<form class='browser-default' id='form' method='post' enctype='multipart/form-data' action=''>{% csrf_token %}
+		{{form.as_p}}
+		<p><input class='waves-effect waves-light btn' type='submit' value='Confirmar'/></p>
+	</form>
+	</div>
+</div>
+{% endblock %}
